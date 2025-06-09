@@ -1,0 +1,10 @@
+.safeweb-warning {
+    background-color: #f9c349 !important;
+}
+
+.safeweb-warningText {
+    bottom: 8px;
+    font-style: normal !important;
+    margin-top: -8px;
+    position: relative;
+}
