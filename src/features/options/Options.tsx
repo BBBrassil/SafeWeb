@@ -1,7 +1,7 @@
 function Options() {
   return (
     <div className="Options">
-      <h1>Extension Options</h1>
+      <h1>Options</h1>
     </div>
   );
 }

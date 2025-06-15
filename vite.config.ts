@@ -20,7 +20,11 @@ export default defineConfig({
     rollupOptions: {
       input: {
         content: resolve(__dirname, "src/content.ts"),
-        options: resolve(__dirname, "options.html")
+        contextMenu: resolve(__dirname, "src/contextMenu.ts"),
+        help: resolve(__dirname, "help.html"),
+        options: resolve(__dirname, "options.html"),
+        report: resolve(__dirname, "report.html"),
+        scan: resolve(__dirname, "scan.html")
       },
       output: {
         entryFileNames: "[name].js",
