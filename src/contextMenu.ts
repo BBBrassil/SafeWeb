@@ -1,18 +1,30 @@
 chrome.contextMenus.onClicked.addListener(handleClick);
 
-function handleClick(info: chrome.contextMenus.OnClickData){
+const formatUrl = (baseUrl: string, params?: Record<string, string> | undefined) => {
+    const urlSearchParams = new URLSearchParams(params);
+    return `${baseUrl}?${urlSearchParams.toString()}`;
+}
+
+const getActiveTab = async () => {
+  const queryOptions = { active: true, lastFocusedWindow: true };
+  const [tab] = await chrome.tabs.query(queryOptions);
+  return tab;
+}
+
+async function handleClick(info: chrome.contextMenus.OnClickData) {
+    const activeTab = await getActiveTab();
     switch (info.menuItemId) {
         case "help":
-            chrome.tabs.create({url: "help.html"});
+            chrome.tabs.create({ url: "help.html" });
             break;
         case "options":
-            chrome.tabs.create({url: "options.html"});
+            chrome.tabs.create({ url: "options.html" });
             break;
         case "report":
-            chrome.tabs.create({url: "report.html"});
+            chrome.tabs.create({ url: formatUrl("report.html", { target: activeTab.url ?? "" }) });
             break;
         case "scan":
-            chrome.tabs.create({url: "scan.html"});
+            chrome.tabs.create({ url: formatUrl("scan.html", { target: activeTab.url ?? "" }) });
             break;
     }
 }
@@ -26,7 +38,7 @@ chrome.runtime.onInstalled.addListener(function () {
     chrome.contextMenus.create({
         id: "report",
         title: "Report",
-        contexts: ["link"]
+        contexts: ["all"]
     });
 
     chrome.contextMenus.create({

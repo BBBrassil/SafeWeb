@@ -3,15 +3,25 @@
   "name": "SafeWeb",
   "version": "0.1.0",
   "description": "A suspicious website detection extension.",
-  "permissions": ["contextMenus"],
+  "permissions": [
+    "contextMenus",
+    "tabs"
+  ],
   "background": {
     "service_worker": "contextMenu.js"
   },
   "content_scripts": [
     {
-      "css": ["safeweb.css"],
-      "js": ["content.js"],
-      "matches": ["http://*/*", "https://*/*"]
+      "css": [
+        "safeweb.css"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ]
     }
   ],
   "options_page": "options.html",
