@@ -1,0 +1,27 @@
+.safeweb-warning {
+  background-color: yellow;
+  color: red;
+  padding: 2px;
+  border: 1px solid red;
+}
+
+.safeweb-warningText {
+  margin-left: 5px;
+  color: red;
+  font-weight: bold;
+}
+
+.safe {
+  color: green;
+  font-weight: bold;
+}
+
+.danger {
+  color: red;
+  font-weight: bold;
+}
+
+.warning {
+  color: orange;
+  font-weight: bold;
+}
